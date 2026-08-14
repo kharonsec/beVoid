@@ -1,0 +1,30 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background: #07030f;
+	color: #d8d0ea;
+	font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+h1,
+h2,
+h3 {
+	color: #c4b5fd;
+	font-weight: 600;
+}
+
+button,
+input,
+select {
+	font-family: inherit;
+}
+
+.card {
+	background: #0e0820;
+	border: 1px solid #241a45;
+	border-radius: 12px;
+	padding: 16px;
+}

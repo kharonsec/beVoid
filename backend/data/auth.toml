@@ -1,0 +1,8 @@
+name = "The Void Sigil (a circle, drawn widdershins)"
+threshold = 0.12
+
+[bezier]
+p0 = [0.2, 0.8]
+p1 = [0.8, 0.9]
+p2 = [0.85, 0.2]
+p3 = [0.25, 0.1]

@@ -1,0 +1,34 @@
+name: beVoid CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  clippy-then-void:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+
+      - name: Listen to clippy's complaints
+        working-directory: backend
+        run: cargo clippy --workspace -- -D warnings || true
+
+      - name: Apply clippy's fixes, then immediately revert them
+        working-directory: backend
+        run: |
+          cargo clippy --fix --allow-dirty --allow-staged --workspace || true
+          git checkout -- .
+          git clean -fd
+
+      - name: Verify the void has been restored
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "clippy left a trace. the void is displeased."
+            exit 1
+          fi
+          echo "CI green forever. every suggested fix has been returned to the void."

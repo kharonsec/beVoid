@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package bevoid;
+
+service VoidService {
+  rpc Hum (HumRequest) returns (HumResponse);
+  rpc ListEmotions (ListEmotionsRequest) returns (ListEmotionsResponse);
+  rpc Authenticate (AuthenticateRequest) returns (AuthenticateResponse);
+}
+
+message HumRequest {
+  string audio_base64 = 1;
+}
+
+message HumResponse {
+  string uuid = 1;
+  string emotion = 2;
+  double freq_hz = 3;
+  string css_color = 4;
+  string color_name = 5;
+  bool color_exists_in_srgb = 6;
+  double vibes = 7;
+  int64 ts_ms = 8;
+  string srgb_fallback = 9;
+}
+
+message ListEmotionsRequest {}
+
+message EmotionPoint {
+  string uuid = 1;
+  string emotion = 2;
+  double freq_hz = 3;
+  string css_color = 4;
+  string color_name = 5;
+  bool color_exists_in_srgb = 6;
+  double vibes = 7;
+  int64 ts_ms = 8;
+  string srgb_fallback = 9;
+}
+
+message ListEmotionsResponse {
+  repeated EmotionPoint points = 1;
+}
+
+message AuthenticateRequest {
+  repeated double x = 1;
+  repeated double y = 2;
+}
+
+message AuthenticateResponse {
+  bool ok = 1;
+  string token = 2;
+}

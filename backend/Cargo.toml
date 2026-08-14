@@ -1,0 +1,22 @@
+[package]
+name = "bevoid"
+version = "0.1.0"
+edition = "2021"
+description = "Reverse-hashes emotions into UUID v7 timestamps and plots them in the void"
+
+[dependencies]
+tonic = "0.12"
+tonic-web = "0.12"
+prost = "0.13"
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+rustfft = "6.2"
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+base64 = "0.22"
+uuid = { version = "1", features = ["v4", "v7"] }
+rand = "0.8"
+
+[build-dependencies]
+tonic-build = "0.12"
+protox = "0.7"
